@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" co</title>
+	<link rel="stylesheet" href="./font/css/all.css">
+	<style>
+		/*general rule for the entire web page*/
+		*{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			/*scroll-behavior: smooth;*/
+		}
+
+		body{
+			position: relative;
+		}
+		/*navigation bar rule command*/
+		.nav-container{
+			background-color: #092f4b;
+			position: fixed;
+			width: 100%;
+			z-index: 100;
+		}
+		/**/
+		.sticky{
+			background-color: #092f4b;
+			color: red;
+			width: 100%;
+			z-index: 100;
+		}
+		.navbar{
+			width: 70%;
+			max-width: 1350px;
+			margin: 0 auto;
+
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		.nav-brand h2{
+			padding: 10px 15px;
+			color: #fff;
+		}
+		.navbar-nav{
+			list-style-type: none;
+		}
+		.navbar-link{
+			display: inline-block;
+			padding:15px;
+			position: relative;
+		}
+		.navbar-link a{
+			text-decoration: none;
+			color: #fff;
+			font-size: 1em;
+			font-weight: 300;
+		}
+
+		.navbar-link:hover::after{
+			content: "";
+			width: 100%;
+			height: 3px;
+			background-color: #fff;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			transform: 3s ease;
+			/* animation: slide 2s; timing-function delay iteration-count direction fill-mode; */
+		}
+		@keyframes slide {
+			0%{
+				transform: translateX(0);
+			}
+			50%{
+				transform: translateX(50%);
+			}
+			100%{
+				transform: translateX(100%);
+			}
+			
+		}
+
+		/*navigation link on hover*/
+		.navbar-link a:hover{
+			color: #ffc107;
+		}
+		.header-container{
+			background-color: #092f4b;
+			position: relative;
+			top: 45px;
+			padding: 15px 0;
+		}
+		/**/
+		header{
+			width: 70%;
+			max-width: 1350px;
+			margin: 0 auto;
+
+			display: flex;
+			justify-content: space-between;
+			gap: 15px;
+		}
+		.title{
+			width: 450px;
+			color: #fff;
+		}
+		.title h1{
+			font-size: 3em;
+			font-weight: 700;
+			padding-left: 15px;
+			padding-top: 20px;
+			margin-top: 50px;
+			font-family: Franklin Gothic Demi, sans-serif;
+		}
+		.title p{
+			font-size: 1em;
+			font-weight: 300;
+			padding-left: 15px;
+			padding-top: 20px;
+			line-height: 25px;
+		}
+		.title-img{
+			height: 400px;
+			width: 900px;
+		}
+		.title-img img{
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+		.title button{
+			width: 200px;
+			font-size: 1.2em;
+			padding: 10px;
+			border-color: #fff;
+			border-radius: 7px;
+			background-color: #3882F6;
+			color: #fff;
+			margin: 30px 15px;
+			cursor: pointer;
+			border-bottom: 2px solid #fff;
+		}
+		/**/
+		/* .title button:hover{
+			color: ;
+		} */
+		section{
+			position: relative;
+			top: 60px;
+			border: 1px solid #FFF;
+		}
+		.section-content{
+			width: 70%;
+			max-width: 1350px;
+			margin: 0 auto;
+			padding-bottom: 15px;
+		}
+		.section-content h2{
+			padding: 15px 0;
+			text-align: center;
+			font-size: 1.5em;
+			font-weight: 700;
+			margin-bottom: 10px;
+		}
+		/**/
+		.gallery{
+			display: flex;
+			justify-content: space-around;
+		}
+		.img{
+			width: 300px;
+			height:minmax(300px, auto);
+		}
+		.img img{
+			width: 100%;
+			border: 3px solid #3882F6;
+			border-radius: 10px;
+			object-fit: cover;
+		}
+		.img h3{
+			font-size: 1.2em;
+			padding: 10px 15px;
+			text-align: center;
+			font-weight: 700;
+		}
+		/**/
+		.section{
+			position: relative;
+			top: 60px;
+			background-color: #999;
+		}
+		.section-content-II{
+			margin: 75px auto;
+			width: 70%;
+		}
+		.section-content-II p{
+			font-size: 2.5em;
+			font-weight: 600;
+			padding: 20px 20px 0;
+		}
+		.section-content-II span{
+			font-size: 1em;
+			font-weight: bolder;
+			display: block;
+			text-align: right;
+			margin-right: 35px;
+			padding-bottom: 10px;
+		}
+		/*this is the css rule for the image catlogue gallery*/
+		.catlogue{
+			width: 70%;
+			height: 400px;
+			margin-inline: auto;
+			margin-top: 25px;
+			margin-bottom: 25px;
+
+			max-width: 1530px;
+			border-radius: 10px;
+			border-right: none;
+			border-bottom: none;
+			border-top: 5px solid black;
+			border-left: 5px solid black;
+
+
+			display: grid;
+			grid-template-columns: repeat(6, 1fr);
+			grid-template-rows: repeat(3, 1fr);
+			grid-gap: 10px;
+
+			overflow: scroll;
+			background-color: #092f4b;
+			scroll-snap-type: both mandatory;
+		}
+		
+		.catlogue::-webkit-scrollbar{
+			width: 0;
+		}
+
+		.catlogue-item{
+			width: 500px;
+			height: 400px;
+			border-radius: 10px;
+			background-color: #FFF;
+			object-fit: cover;
+			scroll-snap-align: start;
+		}
+
+		.catlogue-item img{
+			width: 100%;
+			height: 100%;
+			border: 3px solid #3882F6;
+			border-radius: 10px;
+		}
+
+		/**/
+		.section-content-III{
+			width: 70%;
+			max-width: 1350px;
+			margin: 75px auto;
+			background-color: #3882F6;
+			border-radius: 10px;
+
+			display: flex;
+			justify-content: space-between;
+			color: #fff;
+		}
+		.section-content-III div{
+			padding: 40px 15px;
+		}
+		.section-content-III div h3{
+			font-size: 1.5em;
+			font-weight: 700;
+		}
+		.section-content-III button{
+			width: 200px;
+			font-size: 1.2em;
+			padding: 10px;
+			border-color: #fff;
+			border-radius: 7px;
+			background-color: #3882F6;
+			color: #fff;
+			margin: 40px 30px;
+			cursor: pointer;
+			border-bottom: 2px solid #fff;
+		}
+		/**/
+		footer{
+			background-color: #092f4b;
+			position: relative;
+			top: 60px;
+		}
+		.footer-content{
+			width: 70%;
+			max-width: 1350px;
+			margin: 0 auto;
+			text-align: center;
+		}
+
+		.footer-content h3{
+			font-weight: 400;
+			font-family: serif;
+			font-size: 2em;
+			padding-bottom: 20px;
+			padding-top: 10px;
+			color: #fff;
+		}
+
+		.footer_nav a{
+			display: block;
+			text-decoration: none;
+			color: #fff;
+			padding: 25px 0;
+		}
+		.footer-content p{
+			padding: 30px;
+			color: #fff;
+			font-size: 1em;
+			font-weight: 300;
+		}
+
+			form{
+			min-width: 600px;
+			margin-inline:  auto;
+			margin-block:  30px;
+			background: linear-gradient(to bottom right, hsla(205, 30%, 50%, .65), hsla(5, 70%, 50%, .65));;
+			/* backdrop-filter: blur(5px); */
+			position: absolute;
+			left: 35%;
+			display: none;
+			border-radius: 15px;
+			box-shadow: 5px 5px 5px rgba(0, 0, 0, .85), -5px -5px 5px rgba(0, 0, 0, .85);
+		}
+
+
+		form h1{
+			font-size: 2.5em;
+			font-family: fantasy;
+			color: #000;
+			text-shadow: 1px 3px 5px #fff;
+			padding: 25px 0;
+			margin-left: 50px;
+			text-transform: uppercase;
+			line-height: 1em;
+			letter-spacing: 10px;
+		}
+
+		form .cancle{
+			padding: 20px;
+			color: #fff;
+			font-size: 2.5em;
+			background: transparent;
+			position: absolute;
+			top: 10px;
+			right: 25px;
+			border: none;
+			outline: none;
+			cursor: pointer;
+		}
+
+		form > .block{
+			margin-block:  30px;
+			margin-inline:  20px;
+			border-bottom: 2px solid #666;
+			position: relative;
+		}
+
+		.block label{
+			display: block;
+			font-size: 1.5em;
+			font-family: serif;
+			font-weight: 500;
+			position: absolute;
+			top: -50%;
+			color: #333;
+			transform: translateY(50%);
+			transition: transform 2s;
+		}
+
+		.block input{
+			display: block;
+			width: 100%;
+			height: 100%;
+			font-size: 1rem;
+			padding: 5px 1rem;
+			color: #fff;
+			background: transparent;
+			border: none;
+			outline: none;
+		}
+		.block input:focus ~ label,
+		.block input:valid ~ label{
+			top: -130%;
+		}
+
+
+		.signUp{
+			margin-inline:  20px;
+			margin-bottom: 25px;
+			
+		}
+		.signUp button{
+			width: 100%;
+			padding-block: 15px;
+			
+			
+			border-radius: 15px;
+			font-size: 1.2rem;
+			font-family: fantasy;
+			font-weight: 400;
+			border: none;
+			outline: none;
+			cursor: pointer;
+		}
+
+		.displayForm{
+			display: block;
+			transition: all 5s;
+			top: 5%;
+		}
+
+		.displayForm2{
+			display: block;
+			transition: all 5s;
+			bottom: 3%;
+		}
+	</style>
+</head>
+<body>
+	<!---->
+	<div class="nav-container">
+		<nav id="scroll-nav" class="navbar">
+			<div class="nav-brand">
+				<h2>Header logo</h2>
+			</div>
+			<ul class="navbar-nav">
+				<li class="navbar-link"><a href="#">header link one</a></li>
+				<li class="navbar-link"><a href="#">header link two</a></li>
+				<li class="navbar-link"><a href="#">header link three</a></li>
+			</ul>
+		</nav>
+	</div>
+
+	<!---->
+	<div class="header-container">
+		<header>
+			<div class="title">
+				<h1>This website is awesome</h1>
+				<p>
+					This website has some subtext that goes here under the main title. 
+					It is a lower font and the color is lower constrast is
+				</p>
+				<button type="button" id="signUp">sign up</button>
+			</div>
+			<div class="title-img">
+				<img src="./images/header_img.jpg">
+			</div>
+		</header>
+	</div>
+
+	<!---->
+	<section>
+		<div class="section-content">
+		<h2>some random information</h2>
+		<div class="gallery">
+			<div class="img">
+				<img src="./images/img1.jpg">
+				<h3>Farmhouse</h3>
+			</div>
+			<div class="img">
+				<img src="./images/img2.jpg">
+				<h3>Barndomimium</h3>
+			</div>
+			<div class="img">
+				<img src="./images/img3.jpg">
+				<h3>Modern House</h3>
+			</div>
+			<div class="img">
+				<img src="./images/img4.jpg">
+				<h3>Contemporary English House</h3>
+			</div>
+		</div>
+		</div>
+	</section>
+
+	<!---->
+	<section class="section">
+		<div class="section-content-II">
+		<p>
+		This is an inspiring quote or a testimonial of a customer Maybe its just filling up space, or maybe people will actually read it. Who knows? All that i know is it looks nice
+		</p>
+		<span>-Thor, The god of Thunder</span>
+	</div>
+	</section>
+
+	<!---->
+	<section>
+		<div class="catlogue">
+			<div class="catlogue-item">
+				<img src="./images/img6.jpg">
+			</div>
+			<div class="catlogue-item">
+				<img src="./images/img5.jpg">
+			</div>
+			<div class="catlogue-item">
+				<img src="./images/img26.jpg">
+			</div>
+			<div class="catlogue-item">
+				<img src="./images/img8.jpg">
+			</div>
+			<div class="catlogue-item">
+				<img src="./images/img9.jpg">
+			</div>
+			<div class="catlogue-item">
+				<img src="./images/img11.jpg">
+			</div>
+			<div class="catlogue-item">
+				<img src="./images/img12.jpg">
+			</div>
+			<div class="catlogue-item">
+				<img src="./images/img13.jpg">
+			</div>
+			<div class="catlogue-item">
+				<img src="./images/img14.jpg">
+			</div>
+			<div class="catlogue-item">
+				<img src="./images/img15.jpg">
+			</div>
+			<div class="catlogue-item">
+				<img src="./images/img16.jpg">
+			</div>
+			<div class="catlogue-item">
+				<img src="./images/img17.jpg">
+			</div>
+			<div class="catlogue-item">
+				<img src="./images/img18.jpg">
+			</div>
+			<div class="catlogue-item">
+				<img src="./images/img21.jpg">
+			</div>
+			<div class="catlogue-item">
+				<img src="./images/img24.jpg">
+			</div>
+			<div class="catlogue-item">
+				<img src="./images/img23.jpg">
+			</div>
+			<div class="catlogue-item">
+				<img src="./images/img20.jpg">
+			</div>
+			<div class="catlogue-item">
+				<img src="./images/img21.jpg">
+			</div>
+		</div>
+	</section>
+
+	<!---->
+	<section>
+		<div class="section-content-III">
+			<div>
+			<h3>call to action, its time!</h3>
+			<p>sign up for our product by clicking that button over there</p>
+		</div>
+			<button type="button" id="signUpExtra">sign up</button>
+		</div>
+	</section>
+
+	<!---->
+	<footer>
+		<div class="footer-content">
+			<h3>like and follow us on our social:</h3>
+			<div class="footer_nav">
+				<a href=""><i class="fa-brands fa-facebook fa-2x"></i></a>
+				<a href=""><i class="fa-brands fa-twitter fa-2x"></i></a>
+				<a href=""><i class="fa-brands fa-linkedin fa-2x"></i></a>
+				<a href=""><i class="fa-brands fa-whatsapp fa-2x"></i></a>
+				<a href="">Terms of Service</a>
+				<a href="">Private and Policy</a>
+			</div>
+			<p>Copyright &copy The Odin Project 2023</p>
+		</div>
+	</footer>
+
+		
+		<form>
+			<h1>sign up form</h1>
+			<button class="cancle">&times</button>
+			<div class="block">
+				<label for="sname">Surname</label>
+				<input type="text" name="surname" id="sname" placeholder="">
+			</div>
+			<div class="block">
+				<label for="fname">Firstname</label>
+				<input type="text" name="firstname" id="fname" placeholder="">
+			</div>
+			<div class="block">
+				<label for="email">Email</label>
+				<input type="Email" name="email" id="email" placeholder="">
+			</div>
+			<div class="block">
+				<label for="pass">Password</label>
+				<input type="password" name="password" id="pass" placeholder="">
+			</div>
+			<div class="block">
+				<label for="cpass">Confirm Password</label>
+				<input type="password" name="cPassword" id="cpass" placeholder="">
+			</div>
+			<div class="signUp">
+				<button type="submit">sign up</button>
+			</div>
+		</form>
+
+	<script>
+		
+		
+			let navScroll = document.querySelector(".nav-container");
+
+			if(window.scrollY > 0){
+				window.addEventListener("scroll", () => {
+					 console.log(navScroll)
+				})
+			}
+
+		/**/
+		 (function (){
+		 const form = document.querySelector("form");
+		 const signUp = document.querySelector("#signUp");
+
+		 signUp.addEventListener("click", () => {
+		 	form.classList.add("displayForm");
+		 })
+		/**/
+		const signUpExtra = document.querySelector("#signUpExtra");
+		signUpExtra.addEventListener("click", () => {
+			form.classList.add("displayForm2");
+		})
+		/**/
+		const cancle = document.querySelector(".cancle");
+		cancle.addEventListener("click", () => {
+			form.classList.remove("displayForm");
+			form.classList.remove("displayForm2");
+		})
+
+		}());
+
+	</script>
+</body>
+</html>
